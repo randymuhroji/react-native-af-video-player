@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     height: 35,
     alignSelf: 'stretch',
     justifyContent: 'flex-end'
-  }
+  },
 })
 
 const ControlBar = (props) => {
@@ -31,13 +31,14 @@ const ControlBar = (props) => {
   return (
     <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.75)']} style={styles.container}>
       <Time time={currentTime} theme={theme.seconds} />
-      { !hideSeekBar && 
-        <Scrubber
-          onSeek={pos => onSeek(pos)}
-          onSeekRelease={pos => onSeekRelease(pos)}
-          progress={progress}
-          theme={{ scrubberThumb: theme.scrubberThumb, scrubberBar: theme.scrubberBar }}
-        />
+      { hideSeekBar 
+        ? <View style={{ flex: 1 }}/> 
+        : <Scrubber
+            onSeek={pos => onSeek(pos)}
+            onSeekRelease={pos => onSeekRelease(pos)}
+            progress={progress}
+            theme={{ scrubberThumb: theme.scrubberThumb, scrubberBar: theme.scrubberBar }}
+          />
       }
       <ToggleIcon
         paddingLeft
