@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { ToggleIcon, Time, Scrubber } from './'
 
@@ -50,7 +50,7 @@ const ControlBar = (props) => {
         size={20}
       />
       <Time time={duration} theme={theme.duration} />
-      { !inlineOnly || !hideFullScreenControl &&
+      { !hideFullScreenControl &&
       <ToggleIcon
         paddingRight
         onPress={() => props.toggleFS()}
@@ -76,7 +76,7 @@ ControlBar.propTypes = {
   currentTime: PropTypes.number.isRequired,
   duration: PropTypes.number.isRequired,
   theme: PropTypes.object.isRequired,
-  hideSeekBar: PropTypes.object
+  hideSeekBar: PropTypes.bool
 }
 
 export { ControlBar }
